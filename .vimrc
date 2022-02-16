@@ -23,7 +23,7 @@ set number "顯示左側行號
 "2. nu nornu: 只顯示行號
 "3. nonu rnu: 光標所在行數為 0，上下行數顯示相對行號（搭配 hjkl 移動）
 "4. nu rnu: 光標所在行數為當前行數，上下行數顯示相對行號（搭配 hjkl 移動）
-set cursorline
+set cursorline "highlight 光標所在行數，會將所有行 redrawing，導致變慢
 
 set showcmd "在視窗下面顯示未完成指令
 set showmode "在視窗下面顯示當前模式，未顯示任何模式時為 normal mode
@@ -51,6 +51,9 @@ set list listchars=tab:→\ ,trail:·,eol:¬
 "listchars(lsc) 自訂不可見字符顯示符號
 "eol: 行結束符、trail: 行尾空格
 
+highlight LineNr ctermbg=NONE ctermfg=gray
+highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow 
+"CursorLineNr 需開啟 cursorline
 
 "Plugin start
 call plug#begin('~/.vim/plugged')
@@ -69,6 +72,8 @@ call plug#end()
 "Plugin end
 
 colorscheme onedark
+
+"lightline.vim setting start
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -80,6 +85,5 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+"lightline.vim setting end
 
-highlight LineNr ctermbg=NONE ctermfg=gray
-highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow
