@@ -18,7 +18,7 @@ set visualbell t_vb= "關掉提示鈴
 
 set ruler "在視窗下方顯示尺標
 set number "顯示左側行號
-"set relativenumber "顯示相對行數，與 number 搭配會產生以下四種數字顯示：
+set relativenumber "顯示相對行數，與 number 搭配會產生以下四種數字顯示：
 "1. nonu nornu: 不顯示行號
 "2. nu nornu: 只顯示行號
 "3. nonu rnu: 光標所在行數為 0，上下行數顯示相對行號（搭配 hjkl 移動）
@@ -51,9 +51,59 @@ set list listchars=tab:→\ ,trail:·,eol:¬
 "listchars(lsc) 自訂不可見字符顯示符號
 "eol: 行結束符、trail: 行尾空格
 
-highlight LineNr ctermbg=NONE ctermfg=gray
-highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow 
-"CursorLineNr 需開啟 cursorline
+set clipboard^=unnamed,unnamedplus "讓寄存器和系統剪貼簿內容同步
+
+"backet 自動補全
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap < <><LEFT>
+
+function! RemovePairs()
+    let s:line = getline(".")
+    let s:previous_char = s:line[col(".")-1]
+
+    if index(["(","[","{"],s:previous_char) != -1
+        let l:original_pos = getpos(".")
+        execute "normal %"
+        let l:new_pos = getpos(".")
+        " only right (
+        if l:original_pos == l:new_pos
+            execute "normal! a\<BS>"
+            return
+        end
+
+        let l:line2 = getline(".")
+        if len(l:line2) == col(".")
+            execute "normal! v%xa"
+        else
+            execute "normal! v%xi"
+        end
+    else
+        execute "normal! a\<BS>"
+    end
+endfunction
+
+function! RemoveNextDoubleChar(char)
+    let l:line = getline(".")
+    let l:next_char = l:line[col(".")]
+
+    if a:char == l:next_char
+        execute "normal! l"
+    else
+        execute "normal! i" . a:char . ""
+    end
+endfunction
+
+inoremap <BS> <ESC>:call RemovePairs()<CR>a
+inoremap ) <ESC>:call RemoveNextDoubleChar(')')<CR>a
+inoremap ] <ESC>:call RemoveNextDoubleChar(']')<CR>a
+inoremap } <ESC>:call RemoveNextDoubleChar('}')<CR>a
+inoremap > <ESC>:call RemoveNextDoubleChar('>')<CR>a
+"自動補全 end
+
 
 "Plugin start
 call plug#begin('~/.vim/plugged')
@@ -86,4 +136,9 @@ let g:lightline = {
       \ },
       \ }
 "lightline.vim setting end
+
+"微調 colorscheme 配色
+highlight LineNr ctermbg=NONE ctermfg=gray
+highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow 
+"CursorLineNr 需開啟 cursorline
 
