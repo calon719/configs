@@ -53,16 +53,36 @@ set list listchars=tab:→\ ,trail:·,eol:¬
 
 set clipboard^=unnamed,unnamedplus "讓寄存器和系統剪貼簿內容同步
 
-"map start
+"-------------- map start --------------
 noremap <F3> <Esc>gg=G
 
 "toggle search highlight
 let hlstate=0
 nnoremap <F5> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
-"map end
+"--------------- map end ---------------
 
-"將 plugin 分開儲存
-so ~/.vim/plugin.vim
+"------------ plugin start ------------
+call plug#begin('~/.vim/plugged')
+
+"colorscheme
+Plug 'joshdick/onedark.vim'
+Plug 'itchyny/lightline.vim'
+
+"A collection of language packs for Vim
+Plug 'sheerun/vim-polyglot'
+"returns the name of the git branch
+Plug 'itchyny/vim-gitbranch'
+"顯示 Git commit 更改紀錄
+Plug 'airblade/vim-gitgutter'
+
+"針對程式碼進行檢查
+Plug 'scrooloose/syntastic'
+
+"emmet
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+"------------- plugin end -------------
 
 colorscheme onedark
 
@@ -85,3 +105,14 @@ highlight LineNr ctermbg=NONE ctermfg=gray
 highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow 
 "CursorLineNr 需開啟 cursorline
 
+" Syntastic config start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
+" Syntastic config end
