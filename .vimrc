@@ -61,24 +61,8 @@ let hlstate=0
 nnoremap <F5> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
 "map end
 
-"Plugin start
-call plug#begin('~/.vim/plugged')
-
-"colorscheme
-Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
-
-"A collection of language packs for Vim
-Plug 'sheerun/vim-polyglot'
-
-"returns the name of the git branch
-Plug 'itchyny/vim-gitbranch'
-
-"emmet
-Plug 'mattn/emmet-vim'
-
-call plug#end()
-"Plugin end
+"將 plugin 分開儲存
+so ~/.vim/plugin.vim
 
 colorscheme onedark
 
