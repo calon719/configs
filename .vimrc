@@ -7,7 +7,7 @@ set hidden "如果設置為 nohidden，Vim 就會在 Buffer 未保存時會跳�
 "runtimepath 只放 plugin 的路徑
 "$VIMRUNTIME 是隨 Vim 一同發行的 plugins 與 scripts。建議不要在此路徑放自行安裝的文件，這裡的文件很可能會因為升級 Vim 時被覆蓋掉，並且不會給出任何提示
 
-set backup "Vim 自動備份
+"set backup "Vim 自動備份
 
 syntax on "語法 highlight
 filetype on "檢測文件類型，所有語法檢測、高亮縮進規則都依賴此功能
@@ -54,11 +54,13 @@ set list listchars=tab:→\ ,trail:·,eol:¬
 set clipboard^=unnamed,unnamedplus "讓寄存器和系統剪貼簿內容同步
 
 "-------------- map start --------------
-noremap <F3> <Esc>gg=G
+noremap <F4> <Esc>gg=G
 
 "toggle search highlight
 let hlstate=0
 nnoremap <F5> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
+
+nnoremap <F6> :exec 'NERDTreeToggle' <CR>
 "--------------- map end ---------------
 
 "------------ plugin start ------------
@@ -80,6 +82,9 @@ Plug 'scrooloose/syntastic'
 
 "emmet
 Plug 'mattn/emmet-vim'
+
+"樹狀檔案管理
+Plug 'preservim/nerdtree'
 
 call plug#end()
 "------------- plugin end -------------
