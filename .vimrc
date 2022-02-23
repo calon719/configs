@@ -10,7 +10,6 @@ set hidden "如果設置為 nohidden，Vim 就會在 Buffer 未保存時會跳�
 "set backup "Vim 自動備份
 
 syntax on "語法 highlight
-au BufRead,BufNewFile *.vue set filetype=html " 以 HTML 來對待 Vue
 filetype on "檢測文件類型，所有語法檢測、高亮縮進規則都依賴此功能
 filetype indent on "縮進規則，配合上面 filetype 檢測文件類型
 
