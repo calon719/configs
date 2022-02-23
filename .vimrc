@@ -10,6 +10,7 @@ set hidden "如果設置為 nohidden，Vim 就會在 Buffer 未保存時會跳�
 "set backup "Vim 自動備份
 
 syntax on "語法 highlight
+au BufRead,BufNewFile *.vue set filetype=html " 以 HTML 來對待 Vue
 filetype on "檢測文件類型，所有語法檢測、高亮縮進規則都依賴此功能
 filetype indent on "縮進規則，配合上面 filetype 檢測文件類型
 
@@ -66,25 +67,17 @@ nnoremap <F6> :exec 'NERDTreeToggle' <CR>
 "------------ plugin start ------------
 call plug#begin('~/.vim/plugged')
 
-"colorscheme
-Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
-
-"A collection of language packs for Vim
-Plug 'sheerun/vim-polyglot'
-"returns the name of the git branch
-Plug 'itchyny/vim-gitbranch'
-"顯示 Git commit 更改紀錄
-Plug 'airblade/vim-gitgutter'
-
-"針對程式碼進行檢查
-Plug 'scrooloose/syntastic'
-
-"emmet
+Plug 'joshdick/onedark.vim' "colorscheme
+Plug 'itchyny/lightline.vim' "狀態列
+Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
+Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
+Plug 'scrooloose/syntastic' "針對程式碼進行檢查
 Plug 'mattn/emmet-vim'
-
-"樹狀檔案管理
-Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdcommenter' " 快速註解
+Plug 'preservim/nerdtree' "樹狀檔案管理
+Plug 'jiangmiao/auto-pairs' "自動補全對稱符
+Plug 'chrisbra/Colorizer' "顏色提示
+Plug 'tpope/vim-surround' "快速包圍
 
 call plug#end()
 "------------- plugin end -------------
