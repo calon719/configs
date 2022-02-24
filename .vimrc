@@ -1,6 +1,6 @@
-set encoding=utf-8
-set fileencoding=utf-8
+set encoding=UTF-8
 set t_Co=256
+
 set nocompatible "compatible 是兼容 vi 模式，開啟此功能會有許多 vim 功能無法使用
 set hidden "如果設置為 nohidden，Vim 就會在 Buffer 未保存時會跳出提示
 "set runtimepath=$VIMRUNTIME
@@ -27,6 +27,7 @@ set cursorline "highlight 光標所在行數，會將所有行 redrawing，導�
 
 set showcmd "在視窗下面顯示未完成指令
 set showmode "在視窗下面顯示當前模式，未顯示任何模式時為 normal mode
+set showtabline=2 "永遠顯示 tabline
 
 set scrolloff=3 "當光標距離視窗頂端或底部所設定的行數時會自動捲動視窗
 set backspace=indent,eol,start "indent、eol、start 分別代表：縮進位置、行結束符、段首。這個設置使得這些地方可以使用 backspace
@@ -53,63 +54,46 @@ set list listchars=tab:→\ ,trail:·,eol:¬
 
 set clipboard^=unnamed,unnamedplus "讓寄存器和系統剪貼簿內容同步
 
+let mapleader = ' '
 "-------------- map start --------------
-noremap <F4> <Esc>gg=G
+nnoremap <Leader>i <Esc>gg=G
+
+nnoremap <Leader>[ :bprevious<CR>
+nnoremap <Leader>] :bnext<CR>
+nnoremap <Leader>d :bd<CR>
+
+map <C-_> <Leader>c<space>
 
 "toggle search highlight
 let hlstate=0
-nnoremap <F5> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<cr>
+nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
-nnoremap <F6> :exec 'NERDTreeToggle' <CR>
+nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
+
+"lightline buffer
+"chage buffer
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+"delete buffer
+nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>c4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>c5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>c6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
 "--------------- map end ---------------
 
-"------------ plugin start ------------
-call plug#begin('~/.vim/plugged')
-
-Plug 'joshdick/onedark.vim' "colorscheme
-Plug 'itchyny/lightline.vim' "狀態列
-Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
-Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
-Plug 'scrooloose/syntastic' "針對程式碼進行檢查
-Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdcommenter' " 快速註解
-Plug 'preservim/nerdtree' "樹狀檔案管理
-Plug 'jiangmiao/auto-pairs' "自動補全對稱符
-Plug 'chrisbra/Colorizer' "顏色提示
-Plug 'tpope/vim-surround' "快速包圍
-
-call plug#end()
-"------------- plugin end -------------
-
-colorscheme onedark
-
-"lightline.vim setting start
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
-"lightline.vim setting end
-
-"微調 colorscheme 配色
-highlight LineNr ctermbg=NONE ctermfg=gray
-highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow 
-"CursorLineNr 需開啟 cursorline
-
-" Syntastic config start
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint'
-" Syntastic config end
+so ~/.vim/plugin.vim
