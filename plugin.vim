@@ -47,7 +47,7 @@ let g:lightline = {
       \ }
 
 " lightline-buffer ui settings
-let g:lightline#bufferline#show_number = 1
+let g:lightline#bufferline#show_number = 2
 let g:lightline#bufferline#enable_devicons = 1
 
 "lightline.vim setting end
