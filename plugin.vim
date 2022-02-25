@@ -1,11 +1,10 @@
 call plug#begin('~/.vim/plugged')
 "colorscheme
-"Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons' "檔案 icon
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "icon 顏色
 
-
-Plug 'itchyny/lightline.vim' "狀態列
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
 Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
 Plug 'scrooloose/syntastic' "針對程式碼進行檢查
@@ -15,47 +14,20 @@ Plug 'preservim/nerdtree' "樹狀檔案管理
 Plug 'jiangmiao/auto-pairs' "自動補全對稱符
 Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
-"Plug 'ryanoasis/vim-devicons' "檔案圖示
-Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
+"Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
 
 call plug#end()
-
 "----------------------------"
-colorscheme nord
 
-"lightline.vim setting start
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name',
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ }
-      \ }
+colorscheme one
+set background=dark
+hi Normal guibg=NONE ctermbg=NONE
+hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
+hi CursorLineNr ctermbg=237
 
-" lightline-buffer ui settings
-let g:lightline#bufferline#show_number = 2
-let g:lightline#bufferline#enable_devicons = 1
-
-"lightline.vim setting end
-
-"微調 colorscheme 配色
-"highlight LineNr ctermbg=NONE ctermfg=gray
-"CursorLineNr 需開啟 cursorline
-"highlight CursorLineNr cterm=bold ctermbg=NONE ctermfg=yellow  
+"nerdtree-syntax-highlight config
+let g:NERDTreeExtensionHighlightColor = {}
+let g:NERDTreeExtensionHighlightColor['vue'] = '42b883'
 
 "vim-emmet config
 let g:user_emmet_expandabbr_key = '<c-e>'

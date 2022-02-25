@@ -1,5 +1,6 @@
 set encoding=UTF-8
 set t_Co=256
+set rtp+=$HOME/.local/lib/python3.8/site-packages/powerline/bindings/vim/
 
 set nocompatible "compatible 是兼容 vi 模式，開啟此功能會有許多 vim 功能無法使用
 set hidden "如果設置為 nohidden，Vim 就會在 Buffer 未保存時會跳出提示
@@ -26,7 +27,7 @@ set relativenumber "顯示相對行數，與 number 搭配會產生以下四種�
 set cursorline "highlight 光標所在行數，會將所有行 redrawing，導致變慢
 
 set showcmd "在視窗下面顯示未完成指令
-set showmode "在視窗下面顯示當前模式，未顯示任何模式時為 normal mode
+set noshowmode "在視窗下面顯示當前模式，未顯示任何模式時為 normal mode
 set showtabline=2 "永遠顯示 tabline
 
 set scrolloff=3 "當光標距離視窗頂端或底部所設定的行數時會自動捲動視窗
@@ -60,6 +61,15 @@ nnoremap <Leader>i <Esc>gg=G
 
 nnoremap <Leader>[ :bprevious<CR>
 nnoremap <Leader>] :bnext<CR>
+nnoremap <Leader>1 :bfirst<CR>
+nnoremap <Leader>2 :bfirst<CR>:bn<CR>
+nnoremap <Leader>3 :bfirst<CR>:2bn<CR>
+nnoremap <Leader>4 :bfirst<CR>:3bn<CR>
+nnoremap <Leader>5 :bfirst<CR>:4bn<CR>
+nnoremap <Leader>6 :bfirst<CR>:5bn<CR>
+nnoremap <Leader>7 :bfirst<CR>:6bn<CR>
+nnoremap <Leader>8 :bfirst<CR>:7bn<CR>
+nnoremap <Leader>9 :blast<CR>
 nnoremap <Leader>d :bd<CR>
 
 map <C-_> <Leader>c<space>
@@ -69,31 +79,6 @@ let hlstate=0
 nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
 nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
-
-"lightline buffer
-"chage buffer
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
-
-"delete buffer
-nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
-nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
-nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
-nmap <Leader>c4 <Plug>lightline#bufferline#delete(4)
-nmap <Leader>c5 <Plug>lightline#bufferline#delete(5)
-nmap <Leader>c6 <Plug>lightline#bufferline#delete(6)
-nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
-nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
-nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
-nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
 "--------------- map end ---------------
 
 so ~/.vim/plugin.vim
