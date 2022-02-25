@@ -72,13 +72,19 @@ nnoremap <Leader>8 :bfirst<CR>:7bn<CR>
 nnoremap <Leader>9 :blast<CR>
 nnoremap <Leader>d :bd<CR>
 
-map <C-_> <Leader>c<space>
+noremap <C-_> <Leader>c<space>
 
 "toggle search highlight
 let hlstate=0
 nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
 nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
+nnoremap <Leader>r :NERDTreeRefreshRoot <CR>
 "--------------- map end ---------------
 
 so ~/.vim/plugin.vim
+
+function StartUp()
+    NERDTree
+endfunction
+autocmd VimEnter * call StartUp()

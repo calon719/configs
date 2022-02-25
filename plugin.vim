@@ -14,7 +14,7 @@ Plug 'preservim/nerdtree' "樹狀檔案管理
 Plug 'jiangmiao/auto-pairs' "自動補全對稱符
 Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
-"Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
+Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
 
 call plug#end()
 "----------------------------"
@@ -24,6 +24,7 @@ set background=dark
 hi Normal guibg=NONE ctermbg=NONE
 hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
 hi CursorLineNr ctermbg=237
+hi VertSplit term=reverse ctermfg=32 ctermbg=236
 
 "nerdtree-syntax-highlight config
 let g:NERDTreeExtensionHighlightColor = {}
