@@ -15,6 +15,7 @@ Plug 'jiangmiao/auto-pairs' "自動補全對稱符
 Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
+Plug 'frazrepo/vim-rainbow' "將大括號和巢狀結構上色
 
 call plug#end()
 "----------------------------"
@@ -66,3 +67,16 @@ let NERDTreeShowHidden=1
 
 "nerdcommenter config
 let g:NERDSpaceDelims=1
+
+"vim-rainbow config
+let g:rainbow_active = 1
+
+let g:rainbow_load_separately = [
+    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+    \ ]
+
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']

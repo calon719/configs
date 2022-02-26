@@ -48,7 +48,7 @@ set shiftwidth=2 "每一次縮進的空白格數，當使用自動格式化或�
 set tabstop=2 "<TAB> 所代表的空白格數
 set softtabstop=2 "開啟時當使用 <BS> 刪除 <TAB> 所填充的空白時，會刪除所設定的值的空白數。對 <SPACE> 插入的空白沒有影響
 
-set list listchars=tab:→\ ,trail:·,eol:¬
+set list listchars=tab:→\ ,space:·,trail:·,eol:¬
 "list 開顯示不可見字符
 "listchars(lsc) 自訂不可見字符顯示符號
 "eol: 行結束符、trail: 行尾空格
@@ -79,12 +79,7 @@ let hlstate=0
 nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
 nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
-nnoremap <Leader>r :NERDTreeRefreshRoot <CR>
+nnoremap <Leader>nr :NERDTreeRefreshRoot <CR>
 "--------------- map end ---------------
 
 so ~/.vim/plugin.vim
-
-function StartUp()
-    NERDTree
-endfunction
-autocmd VimEnter * call StartUp()
