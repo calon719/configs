@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugged')
 "colorscheme
 Plug 'rakr/vim-one'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons' "檔案 icon
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "icon 顏色
 
@@ -25,11 +26,60 @@ set background=dark
 hi Normal guibg=NONE ctermbg=NONE
 hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
 hi CursorLineNr ctermbg=237
-hi VertSplit term=reverse ctermfg=32 ctermbg=236
-
+hi VertSplit term=reverse ctermfg=32 ctermbg=236 
 "nerdtree-syntax-highlight config
 let g:NERDTreeExtensionHighlightColor = {}
 let g:NERDTreeExtensionHighlightColor['vue'] = '42b883'
+
+
+
+"lightline config
+function! GitbranchIcon()
+  return " ".gitbranch#name()
+endfunction
+function! Filetype()
+  return WebDevIconsGetFileTypeSymbol()
+endfunction
+function! LineInfo()
+  return "\ue0a1"
+endfunction
+
+set laststatus=2
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
+      \   'right': [ [ 'percent' ],
+      \              [ 'lineinfo' ],
+      \              [ 'filetype' ]]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component': {
+      \   'filetype': '%{WebDevIconsGetFileTypeSymbol()} %Y',
+      \   'lineinfo': ' %c:%l/%L',
+      \   'close': ' buffers '
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers',
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'GitbranchIcon',
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel',
+      \ },
+      \ 'separator': { 'left': "\ue0b8", 'right': "\ue0ba " },
+      \ 'subseparator': { 'left': "\ue0b9", 'right': "\ue0b9" }
+      \ }
+
+" lightline-buffer ui settings
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#enable_devicons = 1
 
 "vim-emmet config
 let g:user_emmet_expandabbr_key = '<c-e>'
