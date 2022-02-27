@@ -16,32 +16,25 @@ Plug 'jiangmiao/auto-pairs' "自動補全對稱符
 Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
-Plug 'frazrepo/vim-rainbow' "將大括號和巢狀結構上色
+Plug 'frazrepo/vim-rainbow'
 
 call plug#end()
 "----------------------------"
 
 colorscheme one
 set background=dark
-hi Normal guibg=NONE ctermbg=NONE
+hi Normal ctermbg=NONE
 hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
 hi CursorLineNr ctermbg=237
 hi VertSplit term=reverse ctermfg=32 ctermbg=236 
+
 "nerdtree-syntax-highlight config
 let g:NERDTreeExtensionHighlightColor = {}
 let g:NERDTreeExtensionHighlightColor['vue'] = '42b883'
 
-
-
 "lightline config
 function! GitbranchIcon()
   return " ".gitbranch#name()
-endfunction
-function! Filetype()
-  return WebDevIconsGetFileTypeSymbol()
-endfunction
-function! LineInfo()
-  return "\ue0a1"
 endfunction
 
 set laststatus=2
@@ -118,15 +111,5 @@ let NERDTreeShowHidden=1
 "nerdcommenter config
 let g:NERDSpaceDelims=1
 
-"vim-rainbow config
+"rainbow config
 let g:rainbow_active = 1
-
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
-
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
