@@ -7,7 +7,6 @@ Plug 'ryanoasis/vim-devicons' "檔案 icon
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "icon 顏色
 
 Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
-Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
 Plug 'scrooloose/syntastic' "針對程式碼進行檢查
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter' "快速註解
@@ -17,7 +16,9 @@ Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
 Plug 'frazrepo/vim-rainbow'
+Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
 Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter' "查看這次 commit 新增修改內容
 
 call plug#end()
 "----------------------------"
@@ -27,6 +28,7 @@ set background=dark
 hi Normal ctermbg=NONE
 hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
 hi CursorLineNr ctermbg=237
+hi SignColumn ctermbg=NONE
 hi VertSplit term=reverse ctermfg=32 ctermbg=236 
 
 "nerdtree-syntax-highlight config
