@@ -17,6 +17,7 @@ Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
 Plug 'frazrepo/vim-rainbow'
+Plug 'zivyangll/git-blame.vim'
 
 call plug#end()
 "----------------------------"

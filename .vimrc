@@ -61,18 +61,9 @@ nnoremap <Leader>i <Esc>gg=G
 
 nnoremap <Leader>[ :bprevious<CR>
 nnoremap <Leader>] :bnext<CR>
-nnoremap <Leader>1 :bfirst<CR>
-nnoremap <Leader>2 :bfirst<CR>:bn<CR>
-nnoremap <Leader>3 :bfirst<CR>:2bn<CR>
-nnoremap <Leader>4 :bfirst<CR>:3bn<CR>
-nnoremap <Leader>5 :bfirst<CR>:4bn<CR>
-nnoremap <Leader>6 :bfirst<CR>:5bn<CR>
-nnoremap <Leader>7 :bfirst<CR>:6bn<CR>
-nnoremap <Leader>8 :bfirst<CR>:7bn<CR>
-nnoremap <Leader>9 :blast<CR>
 nnoremap <Leader>d :bd<CR>
 
-"lightline buffer start
+"lightline buffer
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
@@ -94,10 +85,8 @@ nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
 nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
 nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
-"lightline buffer end
-"
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 
+"nerdcommenter
 map <C-_> <Leader>c<space>
 
 "toggle search highlight
@@ -106,6 +95,9 @@ nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \|
 
 nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
 nnoremap <Leader>nr :NERDTreeRefreshRoot <CR>
+
+"gitblame
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 "--------------- map end ---------------
 
 so ~/.vim/plugin.vim
