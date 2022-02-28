@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
-Plug 'zivyangll/git-blame.vim'
+Plug 'APZelos/blamer.nvim' "查看 git commit
 Plug 'airblade/vim-gitgutter' "查看這次 commit 新增修改內容
 
 call plug#end()
@@ -116,3 +116,9 @@ let g:NERDSpaceDelims=1
 
 "rainbow config
 let g:rainbow_active = 1
+
+"git blamer config
+let g:blamer_delay = 500
+let g:blamer_enabled = 1
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_show_in_insert_modes = 0

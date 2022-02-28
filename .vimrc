@@ -95,9 +95,6 @@ nnoremap <Leader>h :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \|
 
 nnoremap <Leader>n :exec 'NERDTreeToggle' <CR>
 nnoremap <Leader>nr :NERDTreeRefreshRoot <CR>
-
-"gitblame
-nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 "--------------- map end ---------------
 
 so ~/.vim/plugin.vim
