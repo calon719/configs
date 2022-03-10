@@ -29,6 +29,8 @@ hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
 hi CursorLineNr ctermbg=237
 hi SignColumn ctermbg=NONE
 hi VertSplit term=reverse ctermfg=32 ctermbg=NONE 
+hi SpecialKey ctermfg=242
+hi NonText ctermfg=242
 
 "nerdtree-syntax-highlight config
 let g:NERDTreeExtensionHighlightColor = {}
