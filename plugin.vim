@@ -5,8 +5,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons' "檔案 icon
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "icon 顏色
-
-Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
 Plug 'scrooloose/syntastic' "針對程式碼進行檢查
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter' "快速註解
@@ -15,6 +13,14 @@ Plug 'jiangmiao/auto-pairs' "自動補全對稱符
 Plug 'chrisbra/Colorizer' "顏色提示
 Plug 'tpope/vim-surround' "快速包圍
 Plug 'leafOfTree/vim-vue-plugin' "格式化 .vue 檔
+
+" language highlight
+Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+
+" Git
 Plug 'itchyny/vim-gitbranch' "returns the name of the git branch
 " Plug 'APZelos/blamer.nvim' "查看 git commit
 " Plug 'airblade/vim-gitgutter' "查看這次 commit 新增修改內容
